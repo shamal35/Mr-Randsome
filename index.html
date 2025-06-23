@@ -1,144 +1,1144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shamal Theekshana - Cybersecurity Offensive Engineer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mr. Ransomware - Elite Cybersecurity Specialist</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for icons -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Custom styles & animations */
+
+    /* Matrix-style background for hero */
+    @keyframes matrixRain {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 100%;
+      }
+    }
+
+    #matrix-bg {
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.95),
+          rgba(0, 0, 0, 0.95)
+        ),
+        url('https://cdn.pixabay.com/photo/2017/10/16/10/43/code-2853668_1280.jpg');
+      background-size: cover;
+      animation: matrixRain 15s linear infinite;
+      filter: brightness(0.3);
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* Scroll to top button fade */
+    #scrollToTop {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Navbar shadow on scroll */
+    .navbar-scrolled {
+      background-color: rgba(5, 25, 5, 0.85) !important;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.5);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    /* Animate fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Neon Text */
+    .neon-green {
+      color: #00ff00;
+      text-shadow:
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    }
+
+    /* Skill & project card hover */
+    .card-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ff00;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Button hover */
+    button:hover {
+      background-color: #00cc00 !important;
+    }
+
+    /* Input and textarea focus */
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #00ff00;
+      box-shadow: 0 0 8px #00ff00;
+      background-color: #111;
+      transition: box-shadow 0.3s ease;
+    }
+
+    /* Enhanced animations */
+    .glitch {
+      position: relative;
+      animation: glitch 1s linear infinite;
+    }
+
+    @keyframes glitch {
+      2%, 64% { transform: translate(2px, 0) skew(0deg); }
+      4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+      62% { transform: translate(0, 0) skew(5deg); }
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid #00ff00;
+      white-space: nowrap;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00ff00 }
+    }
+
+    /* New hover effects */
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    .project-card:hover::before {
+      left: 100%;
+    }
+
+    /* Enhanced code matrix styles */
+    .code-matrix {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .code-matrix:hover {
+      border-color: rgba(0, 255, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    }
+
+    .code-matrix::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(0, 255, 0, 0.1) 50%,
+        transparent 100%
+      );
+      animation: matrixScan 3s linear infinite;
+    }
+
+    @keyframes matrixScan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .code-line {
+      position: relative;
+      padding-left: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .code-line:hover {
+      background: rgba(0, 255, 0, 0.1);
+      transform: translateX(5px);
+    }
+
+    .code-line::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: #00ff00;
+      opacity: 0.5;
+    }
+
+    .code-keyword {
+      color: #ff79c6;
+    }
+
+    .code-string {
+      color: #f1fa8c;
+    }
+
+    .code-comment {
+      color: #6272a4;
+    }
+
+    .code-function {
+      color: #8be9fd;
+    }
+
+    .code-number {
+      color: #bd93f9;
+    }
+
+    .code-matrix-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: rgba(0, 255, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+    }
+
+    .code-matrix-title {
+      font-size: 0.875rem;
+      color: #00ff00;
+      font-weight: 600;
+    }
+
+    .code-matrix-controls {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .code-matrix-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .code-matrix-btn.close { background: #ff5555; }
+    .code-matrix-btn.minimize { background: #f1fa8c; }
+    .code-matrix-btn.maximize { background: #50fa7b; }
+
+    .code-matrix-btn:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* Hacker Dashboard Styles */
+    .hacker-dashboard {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      transition: all 0.3s ease;
+      background: rgba(0, 20, 0, 0.95);
+    }
+
+    .hacker-dashboard:hover {
+      border-color: rgba(0, 255, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .dashboard-card {
+      background: rgba(0, 40, 0, 0.5);
+      border: 1px solid rgba(0, 255, 0, 0.2);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: rgba(0, 255, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+    }
+
+    .dashboard-title {
+      font-size: 0.875rem;
+      color: #00ff00;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00ff00;
+      text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #00ff00;
+      opacity: 0.7;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: rgba(0, 255, 0, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #00ff00;
+      animation: progress 2s ease-in-out infinite;
+    }
+
+    @keyframes progress {
+      0% { width: 0%; }
+      50% { width: 100%; }
+      100% { width: 0%; }
+    }
+
+    .alert {
+      padding: 0.5rem;
+      border-left: 3px solid #00ff00;
+      background: rgba(0, 255, 0, 0.1);
+      margin: 0.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    .alert.warning {
+      border-left-color: #ff5555;
+      background: rgba(255, 85, 85, 0.1);
+    }
+
+    .terminal-output {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #00ff00;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    .terminal-line {
+      margin: 0.25rem 0;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">Shamal Theekshana</div>
-            <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <h1>Cybersecurity Offensive Engineer</h1>
-            <p>Red Team Specialist | Ethical Hacker | Penetration Tester</p>
-        </div>
-    </header>
+<body class="bg-black text-gray-300 selection:bg-green-500 selection:text-black">
+  <!-- Matrix animated background for hero -->
+  <div id="matrix-bg"></div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <img src="avatar-placeholder.png" alt="Shamal Theekshana" class="avatar">
-            <p>Passionate about offensive security, I have a background in computer science and extensive experience in penetration testing. I hold certifications like OSCP and CEH.</p>
-        </div>
-    </section>
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 w-full z-50">
+    <nav
+      id="navbar"
+      class="navbar flex items-center justify-between px-6 py-4 backdrop-blur-sm transition-colors duration-500"
+    >
+      <a
+        href="#"
+        class="font-extrabold text-2xl neon-green hover:text-green-400 transition-colors glitch"
+        >Mr. Ransomware</a
+      >
+      <!-- Dark mode toggle -->
+      <button
+        id="darkModeToggle"
+        class="text-green-500 hover:text-green-400 transition-colors"
+      >
+        <i class="fas fa-moon"></i>
+      </button>
+      <ul
+        class="hidden md:flex space-x-8 font-semibold text-gray-300 tracking-wide"
+      >
+        <li>
+          <a
+            href="#about"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >About Me</a
+          >
+        </li>
+        <li>
+          <a
+            href="#skills"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Skills</a
+          >
+        </li>
+        <li>
+          <a
+            href="#projects"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="#certifications"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Certifications</a
+          >
+        </li>
+        <li>
+          <a
+            href="#blog"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Contact</a
+          >
+        </li>
+      </ul>
+      <!-- Mobile menu button -->
+      <button
+        id="menu-toggle"
+        aria-label="Toggle menu"
+        class="md:hidden text-green-500 focus:outline-none hover:text-green-400"
+      >
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </nav>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <h3>Penetration Testing Tools</h3>
-                <ul>
-                    <li>Metasploit</li>
-                    <li>Nmap</li>
-                    <li>Burp Suite</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Programming</h3>
-                <ul>
-                    <li>Python</li>
-                    <li>Bash</li>
-                    <li>PowerShell</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>Systems</h3>
-                <ul>
-                    <li>Windows</li>
-                    <li>Linux</li>
-                    <li>Active Directory</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <!-- Mobile menu -->
+    <ul
+      id="mobile-menu"
+      class="hidden flex-col bg-black/95 text-gray-300 space-y-6 py-6 px-6 text-lg font-semibold"
+    >
+      <li><a href="#about" class="block hover:neon-green">About Me</a></li>
+      <li><a href="#skills" class="block hover:neon-green">Skills</a></li>
+      <li><a href="#projects" class="block hover:neon-green">Projects</a></li>
+      <li><a href="#certifications" class="block hover:neon-green">Certifications</a></li>
+      <li><a href="#blog" class="block hover:neon-green">Blog</a></li>
+      <li><a href="#contact" class="block hover:neon-green">Contact</a></li>
+    </ul>
+  </header>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
-            <div class="project-card">
-                <h3>Project Title 1</h3>
-                <p>Short description of the project.</p>
-                <p>Technologies: Metasploit, Python</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <h3>Project Title 2</h3>
-                <p>Short description of the project.</p>
-                <p>Technologies: Nmap, Bash</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <h3>Project Title 3</h3>
-                <p>Short description of the project.</p>
-                <p>Technologies: Burp Suite, PowerShell</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
+  <!-- Enhanced Hero Section -->
+  <section
+    id="home"
+    class="min-h-screen flex flex-col justify-center items-center px-6 text-center relative"
+    style="padding-top: 5rem;"
+  >
+    <h1
+      class="text-5xl md:text-7xl font-extrabold neon-green mb-4 drop-shadow-lg glitch"
+      >Mr. Ransomware</h1
+    >
+    <p class="text-xl md:text-2xl font-semibold text-green-500/90 tracking-widest typewriter">
+      Elite Cybersecurity Specialist | Red Team Expert | Ethical Hacker
+    </p>
+    <div class="mt-8 flex gap-4">
+      <a
+        href="#contact"
+        class="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-lg transition-all transform hover:scale-105"
+      >
+        <i class="fas fa-envelope mr-2"></i>Contact Me
+      </a>
+      <a
+        href="#projects"
+        class="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-8 py-3 rounded-lg transition-all transform hover:scale-105"
+      >
+        <i class="fas fa-code mr-2"></i>View Projects
+      </a>
+    </div>
+    <!-- Enhanced code matrix effect -->
+    <div class="code-matrix mt-12 text-green-500 font-mono text-sm md:text-base max-w-xl max-h-48 overflow-auto bg-green-900/20 backdrop-blur-sm rounded-lg shadow-lg select-none">
+      <div class="code-matrix-header">
+        <span class="code-matrix-title">MrRansomware.js</span>
+        <div class="code-matrix-controls">
+          <button class="code-matrix-btn close" aria-label="Close"></button>
+          <button class="code-matrix-btn minimize" aria-label="Minimize"></button>
+          <button class="code-matrix-btn maximize" aria-label="Maximize"></button>
         </div>
-    </section>
-
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="certifications-container">
-            <div class="certification-badge">OSCP - 2023</div>
-            <div class="certification-badge">CEH - 2022</div>
+      </div>
+      <div class="p-4">
+        <div class="code-line">
+          <span class="code-keyword">class</span> <span class="code-function">MrRansomware</span> {
         </div>
-    </section>
-
-    <section id="blog">
-        <h2>Blog</h2>
-        <div class="blog-post">
-            <h3>Blog Post Title 1</h3>
-            <p>Preview of the blog post...</p>
-            <a href="#" class="read-more">Read More</a>
+        <div class="code-line">
+          &nbsp;&nbsp;<span class="code-function">constructor</span>() {
         </div>
-        <div class="blog-post">
-            <h3>Blog Post Title 2</h3>
-            <p>Preview of the blog post...</p>
-            <a href="#" class="read-more">Read More</a>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.<span class="code-function">skills</span> = [
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="mailto:shamal@example.com"><i class="fas fa-envelope"></i></a>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Penetration Testing'</span>,
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Shamal Theekshana. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Red Teaming'</span>,
         </div>
-    </footer>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'Malware Analysis'</span>
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;];
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.<span class="code-function">certifications</span> = [
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'OSCP'</span>,
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'CEH'</span>,
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'CISSP'</span>
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;];
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.<span class="code-function">experience</span> = <span class="code-string">'5+ years'</span>;
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;}
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;<span class="code-keyword">async</span> <span class="code-function">hackTheSystem</span>() {
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">'Ethically, of course!'</span>;
+        </div>
+        <div class="code-line">
+          &nbsp;&nbsp;}
+        </div>
+        <div class="code-line">
+          }
+        </div>
+        <div class="code-line">
+          <span class="code-comment">// Ready to secure your systems?</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <button id="scrollToTop" title="Go to top">Top</button>
+  <!-- About Me Section -->
+  <section
+    id="about"
+    class="max-w-6xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      About Me
+    </h2>
+    <div
+      class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12"
+    >
+      <img
+        src="https://avatars.githubusercontent.com/u/583231?v=4"
+        alt="Shamal Theekshana Avatar"
+        class="w-48 h-48 rounded-full border-4 border-green-500 shadow-lg"
+        loading="lazy"
+      />
+      <div class="text-lg leading-relaxed max-w-3xl text-gray-300">
+        <p>
+          I am a cybersecurity professional specializing in offensive
+          security, with a strong passion for penetration testing and red
+          teaming. Holding certifications including <mark class="bg-green-800/80 text-green-400">OSCP</mark> and <mark class="bg-green-800/80 text-green-400">CEH</mark>, I have
+          experience performing security assessments and ethical hacking to
+          strengthen security postures.
+        </p>
+        <p class="mt-4">
+          With a deep background in computer science and a curious
+          investigator's mindset, I thrive in uncovering vulnerabilities and
+          devising creative attack vectors while maintaining professionalism
+          and ethics.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Skills Section -->
+  <section
+    id="skills"
+    class="bg-black/80 max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Elite Skills
+    </h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+    >
+      <!-- Pen Testing Tools -->
+      <div
+        class="skill-card bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">
+          <i class="fas fa-tools mr-2"></i>Penetration Testing
+        </h3>
+        <ul class="list-disc list-inside text-green-300 space-y-2">
+          <li>Metasploit Framework</li>
+          <li>Nmap Network Scanner</li>
+          <li>Burp Suite Professional</li>
+          <li>Wireshark</li>
+          <li>OWASP ZAP</li>
+        </ul>
+      </div>
+      <!-- Programming -->
+      <div
+        class="skill-card bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">
+          <i class="fas fa-code mr-2"></i>Programming
+        </h3>
+        <ul class="list-disc list-inside text-green-300 space-y-2">
+          <li>Python (Advanced)</li>
+          <li>Bash Scripting</li>
+          <li>PowerShell</li>
+          <li>C/C++</li>
+          <li>Assembly</li>
+        </ul>
+      </div>
+      <!-- Systems -->
+      <div
+        class="skill-card bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">
+          <i class="fas fa-server mr-2"></i>Systems
+        </h3>
+        <ul class="list-disc list-inside text-green-300 space-y-2">
+          <li>Windows Security</li>
+          <li>Linux Administration</li>
+          <li>Active Directory</li>
+          <li>Cloud Security (AWS/Azure)</li>
+          <li>Docker & Kubernetes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section
+    id="projects"
+    class="max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Featured Projects
+    </h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+    >
+      <!-- Project 1 -->
+      <article
+        class="project-card bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <div class="mb-4">
+          <i class="fas fa-network-wired text-4xl text-green-400"></i>
+        </div>
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">
+          Enterprise Network Security Assessment
+        </h3>
+        <p class="text-green-300 flex-grow">
+          Comprehensive security assessment for a Fortune 500 company, identifying critical vulnerabilities and implementing robust security measures.
+        </p>
+        <div class="mt-4 space-y-2">
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-tools mr-2"></i>Tools: Metasploit, Nmap, BloodHound
+          </p>
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-chart-line mr-2"></i>Impact: 40% reduction in security incidents
+          </p>
+        </div>
+        <a
+          href="#"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+        >
+          <i class="fab fa-github mr-2"></i>View Case Study
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article
+        class="project-card bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <div class="mb-4">
+          <i class="fas fa-bug text-4xl text-green-400"></i>
+        </div>
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">
+          Malware Analysis Framework
+        </h3>
+        <p class="text-green-300 flex-grow">
+          Developed an automated malware analysis framework that processes and analyzes suspicious files, providing detailed threat intelligence.
+        </p>
+        <div class="mt-4 space-y-2">
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-code mr-2"></i>Tech: Python, YARA, Cuckoo Sandbox
+          </p>
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-chart-line mr-2"></i>Success Rate: 95% detection
+          </p>
+        </div>
+        <a
+          href="#"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+        >
+          <i class="fab fa-github mr-2"></i>View on GitHub
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article
+        class="project-card bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <div class="mb-4">
+          <i class="fas fa-shield-alt text-4xl text-green-400"></i>
+        </div>
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">
+          Red Team Operations
+        </h3>
+        <p class="text-green-300 flex-grow">
+          Led multiple red team engagements, simulating advanced persistent threats and providing actionable security recommendations.
+        </p>
+        <div class="mt-4 space-y-2">
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-tools mr-2"></i>Tools: Cobalt Strike, PowerShell Empire
+          </p>
+          <p class="font-mono text-sm text-green-500">
+            <i class="fas fa-chart-line mr-2"></i>Success Rate: 100% engagement completion
+          </p>
+        </div>
+        <a
+          href="#"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+        >
+          <i class="fas fa-file-alt mr-2"></i>Read Report
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section
+    id="certifications"
+    class="bg-black/80 max-w-6xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Certifications
+    </h2>
+    <div
+      class="flex flex-wrap justify-center gap-8"
+    >
+      <!-- OSCP Badge -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-lg text-center w-64 transition flex flex-col items-center"
+      >
+        <i class="fas fa-shield-alt text-green-400 text-5xl mb-3"></i>
+        <h3 class="text-2xl font-semibold neon-green mb-2">OSCP</h3>
+        <p class="text-green-300">Issued: Aug 2023</p>
+        <p class="text-green-500 mt-1 font-mono select-all">Credential ID: 123456789</p>
+      </div>
+
+      <!-- CEH Badge -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-lg text-center w-64 transition flex flex-col items-center"
+      >
+        <i class="fas fa-user-secret text-green-400 text-5xl mb-3"></i>
+        <h3 class="text-2xl font-semibold neon-green mb-2">CEH</h3>
+        <p class="text-green-300">Issued: Mar 2022</p>
+        <p class="text-green-500 mt-1 font-mono select-all">Credential ID: 987654321</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section
+    id="blog"
+    class="max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Blog
+    </h2>
+
+    <article
+      class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 mb-8 max-w-3xl mx-auto shadow-lg transition"
+    >
+      <h3 class="text-2xl font-semibold neon-green mb-2">Ethical Hacking 101: Introduction to Red Teaming</h3>
+      <time class="block text-green-400 mb-4">July 10, 2023</time>
+      <p class="text-green-300 mb-4">
+        A beginner-friendly introduction to the concepts, tools, and methodologies
+        used in red teaming and offensive security.
+      </p>
+      <a href="#"
+        class="inline-block text-green-500 hover:text-green-400 font-semibold transition"
+        >Read More</a
+      >
+    </article>
+
+    <article
+      class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 mb-8 max-w-3xl mx-auto shadow-lg transition"
+    >
+      <h3 class="text-2xl font-semibold neon-green mb-2">CTF Walkthrough: HackTheBox 'Legacy'</h3>
+      <time class="block text-green-400 mb-4">June 05, 2023</time>
+      <p class="text-green-300 mb-4">
+        A detailed walkthrough of solving the 'Legacy' machine on HackTheBox,
+        demonstrating enumeration and privilege escalation.
+      </p>
+      <a href="#"
+        class="inline-block text-green-500 hover:text-green-400 font-semibold transition"
+        >Read More</a
+      >
+    </article>
+  </section>
+
+  <!-- Contact Section -->
+  <section
+    id="contact"
+    class="bg-black/80 max-w-4xl mx-auto px-6 py-24 flex flex-col items-center fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green mb-12 select-none">Contact</h2>
+
+    <form
+      class="w-full max-w-xl flex flex-col space-y-6 text-gray-300"
+      id="contact-form"
+      novalidate
+    >
+      <div>
+        <label for="name" class="block mb-1 text-green-400 font-semibold"
+          >Name</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="Your name"
+          class="w-full rounded-md bg-gray-900 border border-green-600 px-4 py-2 text-green-300 focus:ring-2 focus:ring-green-500 transition"
+        />
+      </div>
+      <div>
+        <label for="email" class="block mb-1 text-green-400 font-semibold"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Your email"
+          class="w-full rounded-md bg-gray-900 border border-green-600 px-4 py-2 text-green-300 focus:ring-2 focus:ring-green-500 transition"
+        />
+      </div>
+      <div>
+        <label for="message" class="block mb-1 text-green-400 font-semibold"
+          >Message</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          placeholder="Your message"
+          class="w-full rounded-md bg-gray-900 border border-green-600 px-4 py-2 text-green-300 focus:ring-2 focus:ring-green-500 resize-none transition"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="w-full py-3 bg-green-700 hover:bg-green-600 text-green-100 font-bold rounded-md transition"
+      >
+        Send Message
+      </button>
+      <p id="form-status" class="text-green-400 mt-4 text-center"></p>
+    </form>
+
+    <div class="flex mt-10 space-x-8 text-3xl text-green-400">
+      <a
+        href="https://linkedin.com/in/shamaltheekshana"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="hover:text-green-600 transition"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a
+        href="https://github.com/shamaltheekshana"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="hover:text-green-600 transition"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a
+        href="mailto:shamal@example.com"
+        aria-label="Email"
+        class="hover:text-green-600 transition"
+        ><i class="fas fa-envelope"></i
+      ></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer
+    class="bg-green-900 bg-opacity-90 text-gray-300 text-center py-6 px-4 select-none"
+  >
+    <p>
+      &copy; 2023 Shamal Theekshana. All rights reserved.
+    </p>
+    <nav class="mt-4 space-x-6">
+      <a href="#about" class="hover:text-green-400 transition font-semibold"
+        >About</a
+      >
+      <a href="#skills" class="hover:text-green-400 transition font-semibold"
+        >Skills</a
+      >
+      <a href="#projects" class="hover:text-green-400 transition font-semibold"
+        >Projects</a
+      >
+      <a
+        href="#certifications"
+        class="hover:text-green-400 transition font-semibold"
+        >Certifications</a
+      >
+      <a href="#blog" class="hover:text-green-400 transition font-semibold"
+        >Blog</a
+      >
+      <a href="#contact" class="hover:text-green-400 transition font-semibold"
+        >Contact</a
+      >
+      <a
+        href="https://github.com/shamaltheekshana/portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-green-400 transition font-semibold"
+        >GitHub</a
+      >
+    </nav>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button
+    id="scrollToTop"
+    aria-label="Scroll to top"
+    class="fixed bottom-6 right-6 bg-green-600 text-black hover:bg-green-500 px-4 py-3 rounded-lg shadow-lg hidden focus:outline-none"
+  >
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll with native CSS 'scroll-behavior: smooth' applied on html.scroll-smooth class
+    // No extra JS needed for anchors
+
+    // Scroll to top button logic
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollToTopBtn.style.display = 'block';
+        scrollToTopBtn.style.opacity = '1';
+      } else {
+        scrollToTopBtn.style.opacity = '0';
+        setTimeout(() => {
+          scrollToTopBtn.style.display = 'none';
+        }, 300);
+      }
+    });
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Navbar shadow toggle on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // Fade-up animation on scroll using intersection observer
+    const faders = document.querySelectorAll('.fade-up');
+    const options = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    };
+    const appearOnScroll = new IntersectionObserver(function (
+      entries,
+      appearOnScroll
+    ) {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add('visible');
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    },
+    options);
+
+    faders.forEach((fader) => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Contact form submit handler (No backend, just front end validation and message)
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Basic validation passed by required fields
+      status.textContent = 'Message sent! Thank you.';
+      form.reset();
+      setTimeout(() => {
+        status.textContent = '';
+      }, 5000);
+    });
+
+    // Dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const icon = darkModeToggle.querySelector('i');
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
+
+    // Enhanced scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('project-card')) {
+            entry.target.style.animationDelay = `${entry.target.dataset.delay}s`;
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up, .project-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Code matrix interactions
+    const codeMatrix = document.querySelector('.code-matrix');
+    const maximizeBtn = document.querySelector('.code-matrix-btn.maximize');
+    const minimizeBtn = document.querySelector('.code-matrix-btn.minimize');
+    const closeBtn = document.querySelector('.code-matrix-btn.close');
+
+    maximizeBtn.addEventListener('click', () => {
+      codeMatrix.classList.toggle('maximized');
+      if (codeMatrix.classList.contains('maximized')) {
+        codeMatrix.style.maxHeight = '80vh';
+        codeMatrix.style.width = '90vw';
+      } else {
+        codeMatrix.style.maxHeight = '12rem';
+        codeMatrix.style.width = 'auto';
+      }
+    });
+
+    minimizeBtn.addEventListener('click', () => {
+      codeMatrix.style.maxHeight = '2rem';
+      codeMatrix.style.overflow = 'hidden';
+      setTimeout(() => {
+        codeMatrix.style.maxHeight = '12rem';
+        codeMatrix.style.overflow = 'auto';
+      }, 300);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      codeMatrix.style.opacity = '0';
+      setTimeout(() => {
+        codeMatrix.style.display = 'none';
+      }, 300);
+    });
+
+    // Add typing effect to code lines
+    const codeLines = document.querySelectorAll('.code-line');
+    codeLines.forEach((line, index) => {
+      line.style.opacity = '0';
+      setTimeout(() => {
+        line.style.opacity = '1';
+        line.style.transform = 'translateX(0)';
+      }, index * 100);
+    });
+  </script>
 </body>
 </html>
