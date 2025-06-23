@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Ransomware - Security Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Dashboard styles */
+        .dashboard-container {
+            background: rgba(0, 20, 0, 0.95);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card {
+            background: rgba(0, 40, 0, 0.5);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            border-color: rgba(0, 255, 0, 0.5);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #00ff00;
+            animation: progress 2s ease-in-out infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+
+        .terminal {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-line {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .alert {
+            border-left: 3px solid #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        .alert.warning {
+            border-left-color: #ff5555;
+            background: rgba(255, 85, 85, 0.1);
+        }
+
+        .glow {
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .network-map {
+            background: rgba(0, 20, 0, 0.5);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        .node {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            position: absolute;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Matrix Background -->
+    <canvas id="matrix" class="matrix-bg"></canvas>
+
+    <!-- Main Dashboard -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div class="flex items-center space-x-4">
+                <i class="fas fa-shield-alt text-3xl text-green-500"></i>
+                <h1 class="text-2xl font-bold glow">Mr. Ransomware Security Dashboard</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm" id="current-time">00:00:00</span>
+                <button class="px-4 py-2 bg-green-900 hover:bg-green-800 rounded">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- System Status -->
+            <div class="stat-card rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                    <i class="fas fa-microchip mr-2"></i>System Status
+                </h3>
+                <div class="text-3xl font-bold mb-2" id="cpu-usage">87%</div>
+                <div class="text-sm opacity-70">CPU Usage</div>
+                <div class="progress-bar mt-2">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="alert mt-2 p-2 text-sm">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    High CPU load detected
+                </div>
+            </div>
+
+            <!-- Network Activity -->
+            <div class="stat-card rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                    <i class="fas fa-network-wired mr-2"></i>Network Activity
+                </h3>
+                <div class="text-3xl font-bold mb-2" id="network-traffic">1.2 GB/s</div>
+                <div class="text-sm opacity-70">Current Traffic</div>
+                <div class="progress-bar mt-2">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="alert warning mt-2 p-2 text-sm">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Suspicious traffic detected
+                </div>
+            </div>
+
+            <!-- Security Metrics -->
+            <div class="stat-card rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                    <i class="fas fa-shield-alt mr-2"></i>Security Metrics
+                </h3>
+                <div class="text-3xl font-bold mb-2" id="threat-level">HIGH</div>
+                <div class="text-sm opacity-70">Current Threat Level</div>
+                <div class="progress-bar mt-2">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="alert warning mt-2 p-2 text-sm">
+                    <i class="fas fa-bug mr-2"></i>
+                    3 vulnerabilities detected
+                </div>
+            </div>
+
+            <!-- Active Connections -->
+            <div class="stat-card rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-2">
+                    <i class="fas fa-plug mr-2"></i>Active Connections
+                </h3>
+                <div class="text-3xl font-bold mb-2" id="connections">42</div>
+                <div class="text-sm opacity-70">Current Sessions</div>
+                <div class="progress-bar mt-2">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="alert mt-2 p-2 text-sm">
+                    <i class="fas fa-user-secret mr-2"></i>
+                    2 unauthorized attempts blocked
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Map and Terminal -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Network Map -->
+            <div class="network-map rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-project-diagram mr-2"></i>Network Map
+                </h3>
+                <div class="relative h-64 bg-black/50 rounded">
+                    <!-- Network nodes will be added dynamically -->
+                </div>
+            </div>
+
+            <!-- Terminal Output -->
+            <div class="terminal rounded-lg p-4">
+                <h3 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-terminal mr-2"></i>Live Terminal
+                </h3>
+                <div class="h-64 overflow-y-auto" id="terminal-output">
+                    <!-- Terminal lines will be added dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="mt-8">
+            <h3 class="text-lg font-semibold mb-4">
+                <i class="fas fa-bell mr-2"></i>Recent Alerts
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="alerts-container">
+                <!-- Alerts will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+        const charArray = chars.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        // Dashboard updates
+        function updateDashboard() {
+            // Update time
+            const timeElement = document.getElementById('current-time');
+            setInterval(() => {
+                const now = new Date();
+                timeElement.textContent = now.toLocaleTimeString();
+            }, 1000);
+
+            // Update stats
+            const stats = {
+                cpu: document.getElementById('cpu-usage'),
+                network: document.getElementById('network-traffic'),
+                threat: document.getElementById('threat-level'),
+                connections: document.getElementById('connections')
+            };
+
+            setInterval(() => {
+                // CPU Usage
+                const cpuUsage = Math.floor(Math.random() * 100);
+                stats.cpu.textContent = `${cpuUsage}%`;
+                stats.cpu.style.color = cpuUsage > 80 ? '#ff5555' : '#00ff00';
+
+                // Network Traffic
+                const traffic = (Math.random() * 2).toFixed(1);
+                stats.network.textContent = `${traffic} GB/s`;
+
+                // Threat Level
+                const levels = ['LOW', 'MEDIUM', 'HIGH'];
+                const threatLevel = levels[Math.floor(Math.random() * levels.length)];
+                stats.threat.textContent = threatLevel;
+                stats.threat.style.color = threatLevel === 'HIGH' ? '#ff5555' : '#00ff00';
+
+                // Connections
+                const connections = Math.floor(Math.random() * 50) + 20;
+                stats.connections.textContent = connections;
+            }, 3000);
+        }
+
+        // Terminal output
+        function updateTerminal() {
+            const terminal = document.getElementById('terminal-output');
+            const messages = [
+                '[INFO] Scanning network for vulnerabilities...',
+                '[WARN] Unauthorized access attempt blocked',
+                '[ALERT] New security patch available',
+                '[INFO] System backup completed',
+                '[WARN] Suspicious file detected in downloads',
+                '[ALERT] Brute force attempt detected',
+                '[INFO] Firewall rules updated',
+                '[WARN] High memory usage detected'
+            ];
+
+            setInterval(() => {
+                const line = document.createElement('div');
+                line.className = 'terminal-line text-sm mb-1';
+                line.textContent = messages[Math.floor(Math.random() * messages.length)];
+                terminal.appendChild(line);
+                terminal.scrollTop = terminal.scrollHeight;
+
+                if (terminal.children.length > 10) {
+                    terminal.removeChild(terminal.children[0]);
+                }
+            }, 5000);
+        }
+
+        // Network map
+        function createNetworkMap() {
+            const container = document.querySelector('.network-map .relative');
+            const nodeCount = 20;
+
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                container.appendChild(node);
+            }
+        }
+
+        // Alerts
+        function updateAlerts() {
+            const container = document.getElementById('alerts-container');
+            const alerts = [
+                {
+                    type: 'warning',
+                    message: 'Suspicious IP detected: 192.168.1.100',
+                    time: '2 minutes ago'
+                },
+                {
+                    type: 'info',
+                    message: 'System scan completed successfully',
+                    time: '5 minutes ago'
+                },
+                {
+                    type: 'warning',
+                    message: 'Multiple failed login attempts',
+                    time: '10 minutes ago'
+                }
+            ];
+
+            alerts.forEach(alert => {
+                const alertElement = document.createElement('div');
+                alertElement.className = `alert ${alert.type} p-4 rounded-lg`;
+                alertElement.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <i class="fas fa-${alert.type === 'warning' ? 'exclamation-triangle' : 'info-circle'} mr-2"></i>
+                            ${alert.message}
+                        </div>
+                        <span class="text-sm opacity-70">${alert.time}</span>
+                    </div>
+                `;
+                container.appendChild(alertElement);
+            });
+        }
+
+        // Initialize dashboard
+        updateDashboard();
+        updateTerminal();
+        createNetworkMap();
+        updateAlerts();
+    </script>
+</body>
+</html> 

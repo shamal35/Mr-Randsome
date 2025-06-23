@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mr. rndsom - Cybersecurity Offensive Engineer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN for icons -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Custom styles & animations */
+
+    /* Matrix-style background for hero */
+    @keyframes matrixRain {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 100%;
+      }
+    }
+
+    #matrix-bg {
+      background: linear-gradient(
+          rgba(0, 0, 0, 0.95),
+          rgba(0, 0, 0, 0.95)
+        ),
+        url('https://cdn.pixabay.com/photo/2017/10/16/10/43/code-2853668_1280.jpg');
+      background-size: cover;
+      animation: matrixRain 15s linear infinite;
+      filter: brightness(0.3);
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* Scroll to top button fade */
+    #scrollToTop {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Navbar shadow on scroll */
+    .navbar-scrolled {
+      background-color: rgba(5, 25, 5, 0.85) !important;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.5);
+      backdrop-filter: saturate(180%) blur(10px);
+    }
+
+    /* Animate fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Neon Text */
+    .neon-green {
+      color: #00ff00;
+      text-shadow:
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    }
+
+    /* Skill & project card hover */
+    .card-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ff00;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Button hover */
+    button:hover {
+      background-color: #00cc00 !important;
+    }
+
+    /* Input and textarea focus */
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #00ff00;
+      box-shadow: 0 0 8px #00ff00;
+      background-color: #111;
+      transition: box-shadow 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-black text-gray-300 selection:bg-green-500 selection:text-black">
+  <!-- Matrix animated background for hero -->
+  <div id="matrix-bg"></div>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 w-full z-50">
+    <nav
+      id="navbar"
+      class="navbar flex items-center justify-between px-6 py-4 backdrop-blur-sm transition-colors duration-500"
+    >
+      <a
+        href="#"
+        class="font-extrabold text-2xl neon-green hover:text-green-400 transition-colors"
+        >Mr. rndsom</a
+      >
+      <ul
+        class="hidden md:flex space-x-8 font-semibold text-gray-300 tracking-wide"
+      >
+        <li>
+          <a
+            href="#about"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >About Me</a
+          >
+        </li>
+        <li>
+          <a
+            href="#skills"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Skills</a
+          >
+        </li>
+        <li>
+          <a
+            href="#projects"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="#certifications"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Certifications</a
+          >
+        </li>
+        <li>
+          <a
+            href="#blog"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Blog</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="hover:neon-green transition duration-300 hover:text-green-400"
+            >Contact</a
+          >
+        </li>
+      </ul>
+      <!-- Mobile menu button -->
+      <button
+        id="menu-toggle"
+        aria-label="Toggle menu"
+        class="md:hidden text-green-500 focus:outline-none hover:text-green-400"
+      >
+        <i class="fas fa-bars fa-lg"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <ul
+      id="mobile-menu"
+      class="hidden flex-col bg-black/95 text-gray-300 space-y-6 py-6 px-6 text-lg font-semibold"
+    >
+      <li><a href="#about" class="block hover:neon-green">About Me</a></li>
+      <li><a href="#skills" class="block hover:neon-green">Skills</a></li>
+      <li><a href="#projects" class="block hover:neon-green">Projects</a></li>
+      <li><a href="#certifications" class="block hover:neon-green">Certifications</a></li>
+      <li><a href="#blog" class="block hover:neon-green">Blog</a></li>
+      <li><a href="#contact" class="block hover:neon-green">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Hero Section -->
+  <section
+    id="home"
+    class="min-h-screen flex flex-col justify-center items-center px-6 text-center relative"
+    style="padding-top: 5rem;"
+  >
+    <h1
+      class="text-5xl md:text-7xl font-extrabold neon-green mb-4 drop-shadow-lg"
+      >Cybersecurity Offensive Engineer</h1
+    >
+    <p class="text-xl md:text-2xl font-semibold text-green-500/90 tracking-widest">
+      Red Team Specialist | Ethical Hacker | Penetration Tester
+    </p>
+    <!-- Hero animation or code matrix effect -->
+    <pre
+      aria-hidden="true"
+      class="mt-12 text-green-500 font-mono text-sm md:text-base max-w-xl max-h-48 overflow-auto bg-green-900/20 backdrop-blur-sm rounded-lg p-4 shadow-lg select-none"
+    >{"\n".repeat(20)}</pre>
+  </section>
+
+  <!-- About Me Section -->
+  <section
+    id="about"
+    class="max-w-6xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      About Me
+    </h2>
+    <div
+      class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12"
+    >
+      <img
+        src="https://avatars.githubusercontent.com/u/583231?v=4"
+        alt="Mr. rndsom Avatar"
+        class="w-48 h-48 rounded-full border-4 border-green-500 shadow-lg"
+        loading="lazy"
+      />
+      <div class="text-lg leading-relaxed max-w-3xl text-gray-300">
+        <p>
+          I am a cybersecurity professional specializing in offensive
+          security, with a strong passion for penetration testing and red
+          teaming. Holding certifications including <mark class="bg-green-800/80 text-green-400">OSCP</mark> and <mark class="bg-green-800/80 text-green-400">CEH</mark>, I have
+          experience performing security assessments and ethical hacking to
+          strengthen security postures.
+        </p>
+        <p class="mt-4">
+          With a deep background in computer science and a curious
+          investigator's mindset, I thrive in uncovering vulnerabilities and
+          devising creative attack vectors while maintaining professionalism
+          and ethics.
+        </p>
+        <p class="mt-4">
+          In my spare time, I enjoy contributing to open-source projects, participating in Capture The Flag (CTF) competitions, and sharing knowledge through my blog.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section
+    id="skills"
+    class="bg-black/80 max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Skills
+    </h2>
+    <div
+      class="flex flex-col md:flex-row justify-around gap-8 max-w-5xl mx-auto"
+    >
+      <!-- Pen Testing Tools -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default flex-1 hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">
+          Penetration Testing Tools
+        </h3>
+        <ul class="list-disc list-inside text-green-300 space-y-1">
+          <li>Metasploit</li>
+          <li>Nmap</li>
+          <li>Burp Suite</li>
+          <li>Wireshark</li>
+          <li>OWASP ZAP</li>
+        </ul>
+      </div>
+      <!-- Programming -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default flex-1 hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">Programming</h3>
+        <ul class="list-disc list-inside text-green-300 space-y-1">
+          <li>Python</li>
+          <li>Bash</li>
+          <li>PowerShell</li>
+          <li>JavaScript</li>
+          <li>Go</li>
+        </ul>
+      </div>
+      <!-- Systems -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-md cursor-default flex-1 hover:bg-green-950 transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-4">Systems</h3>
+        <ul class="list-disc list-inside text-green-300 space-y-1">
+          <li>Windows</li>
+          <li>Linux</li>
+          <li>Active Directory</li>
+          <li>Cloud Security (AWS, Azure)</li>
+          <li>Network Security</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section
+    id="projects"
+    class="max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Projects
+    </h2>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+    >
+      <!-- Project 1 -->
+      <article
+        class="card-hover bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">
+          Internal Network Penetration Test
+        </h3>
+        <p class="text-green-300 flex-grow">
+          Conducted a full internal network penetration test for a mid-size
+          enterprise, identifying critical vulnerabilities and recommending
+          remediation strategies.
+        </p>
+        <p class="mt-4 font-mono text-sm text-green-500">
+          Tools: Metasploit, Nmap, BloodHound
+        </p>
+        <a
+          href="https://github.com/shamal/internal-penetration-test"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+          ><i class="fab fa-github mr-2"></i>View on GitHub</a
+        >
+      </article>
+
+      <!-- Project 2 -->
+      <article
+        class="card-hover bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">CTF Write-Ups</h3>
+        <p class="text-green-300 flex-grow">
+          Detailed write-ups for various Capture The Flag (CTF) challenges in
+          HackTheBox and TryHackMe, demonstrating problem solving and offensive
+          techniques.
+        </p>
+        <p class="mt-4 font-mono text-sm text-green-500">Tools: Python, Bash</p>
+        <a
+          href="https://shamalblog.com/ctf-writeups"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+          ><i class="fas fa-blog mr-2"></i>View Blog</a
+        >
+      </article>
+
+      <!-- Project 3 -->
+      <article
+        class="card-hover bg-gray-900 border border-green-500 rounded-2xl p-6 shadow-lg flex flex-col transition"
+      >
+        <h3 class="text-2xl text-green-400 font-semibold mb-3">
+          Active Directory Exploitation
+        </h3>
+        <p class="text-green-300 flex-grow">
+          An evaluation and exploitation engagement focusing on weaknesses in
+          Active Directory environments, including custom PowerShell scripts.
+        </p>
+        <p class="mt-4 font-mono text-sm text-green-500">
+          Tools: PowerShell, BloodHound, custom scripts
+        </p>
+        <a
+          href="https://github.com/shamal/ad-exploitation"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-block text-green-500 hover:text-green-400 transition font-semibold"
+          ><i class="fab fa-github mr-2"></i>View on GitHub</a
+        >
+      </article>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section
+    id="certifications"
+    class="bg-black/80 max-w-6xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Certifications
+    </h2>
+    <div
+      class="flex flex-wrap justify-center gap-8"
+    >
+      <!-- OSCP Badge -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-lg text-center w-64 transition flex flex-col items-center"
+      >
+        <i class="fas fa-shield-alt text-green-400 text-5xl mb-3"></i>
+        <h3 class="text-2xl font-semibold neon-green mb-2">OSCP</h3>
+        <p class="text-green-300">Issued: Aug 2023</p>
+        <p class="text-green-500 mt-1 font-mono select-all">Credential ID: 123456789</p>
+      </div>
+
+      <!-- CEH Badge -->
+      <div
+        class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 shadow-lg text-center w-64 transition flex flex-col items-center"
+      >
+        <i class="fas fa-user-secret text-green-400 text-5xl mb-3"></i>
+        <h3 class="text-2xl font-semibold neon-green mb-2">CEH</h3>
+        <p class="text-green-300">Issued: Mar 2022</p>
+        <p class="text-green-500 mt-1 font-mono select-all">Credential ID: 987654321</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section
+    id="blog"
+    class="max-w-7xl mx-auto px-6 py-24 fade-up"
+    tabindex="-1"
+  >
+    <h2 class="text-4xl font-bold neon-green text-center mb-12 select-none">
+      Blog
+    </h2>
+
+    <article
+      class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 mb-8 max-w-3xl mx-auto shadow-lg transition"
+    >
+      <h3 class="text-2xl font-semibold neon-green mb-2">Ethical Hacking 101: Introduction to Red Teaming</h3>
+      <time class="block text-green-400 mb-4">July 10, 2023</time>
+      <p class="text-green-300 mb-4">
+        A beginner-friendly introduction to the concepts, tools, and methodologies
+        used in red teaming and offensive security.
+      </p>
+      <a href="#"
+        class="inline-block text-green-500 hover:text-green-400 font-semibold transition"
+        >Read More</a
+      >
+    </article>
+
+    <article
+      class="card-hover bg-gray-900 border border-green-500 rounded-xl p-6 mb-8 max-w-
